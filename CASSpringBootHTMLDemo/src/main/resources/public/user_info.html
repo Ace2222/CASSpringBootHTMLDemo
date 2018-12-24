@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>个人信息</title>
+</head>
+
+<body>
+    <h1>个人信息</h1>
+    <table border="1" >
+        <tr>
+            <td>用户名:</td>
+            <td class="cn"></td>
+        </tr>
+        <tr>
+            <td>姓名:</td>
+            <td class="displayName"></td>
+        </tr>
+        <tr>
+            <td>手机:</td>
+            <td class="mobile"></td>
+        </tr>
+        <tr>
+            <td>邮箱:</td>
+            <td class="email"></td>
+        </tr>
+        <tr>
+            <td>公司:</td>
+            <td class="company"></td>
+        </tr>
+    </table>
+    <a href="http://localhost:8080/logout" >退出登录</a>
+    <script type="text/javascript">
+        function getCookie(cookieName) {
+            var strCookie = document.cookie;
+            var arrCookie = strCookie.split("; ");
+            for (var i = 0; i < arrCookie.length; i++) {
+                var arr = arrCookie[i].split("=");
+                if (cookieName == arr[0]) {
+                    return arr[1];
+                }
+            }
+            return "";
+        }
+        var data = JSON.parse(decodeURIComponent(getCookie("data")));
+        document.getElementsByClassName('cn')[0].innerHTML = data.cn;
+        document.getElementsByClassName('displayName')[0].innerHTML = data.displayName;
+        document.getElementsByClassName('email')[0].innerHTML = data.email;
+        document.getElementsByClassName('mobile')[0].innerHTML = data.mobile;
+        document.getElementsByClassName('company')[0].innerHTML = data.company;
+    </script>
+</body>
+
+</html>
